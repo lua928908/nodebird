@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .timeline
+    .followings.half
+      h2 팔로잉 목록
+      if user.Followings
+        for following in user.Followings
+          div= following.nick
+    .followers.half
+      h2 팔로워 목록
+      if user.Followers
+        for follower in user.Followers
+          div= follower.nick
+      form#profile-form(method='post', action='/user/profile')
+        input(name='nick')
+        button 닉네임 수정
