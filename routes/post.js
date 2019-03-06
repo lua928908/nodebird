@@ -22,9 +22,10 @@ const upload = multer({
 	// limit: 파일사이즈(바이트 단위)
 	limit: { fileSize: 5*1024 * 1024 }, // 5MB 까지 업로드가능
 });
-router.post('/img', isLoggedIn, upload.single('img'), (req, res, next)=>{ // upload.single('img') -> 파일을 올리는 input태그의 id값
+router.post('/img', isLoggedIn, upload.single('img'), (req, res, next)=>{
+	// upload.single('img') -> 파일을 올리는 input태그의 name값을 받는게 일반적이지만, 지금같은경우는 ajax로 보내온 formData의 img값을 참조해야하기 때문에 img로 쓰여있다.
 	// 보통 form을통해 요청을 보내면 req.body에 담기게되는데 multer를 이용해 이미지를 올리면 req.file에 담긴다.
-	console.log(req.file);
+	console.log('파일', req.file);
 	res.json({ url: `/img/${req.file.filename}` });
 });
 

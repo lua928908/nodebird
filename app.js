@@ -21,6 +21,7 @@ const logger = require('./logger');
 const app = express();
 sequelize.sync();
 passportConfig(passport);
+global.appRoot = path.resolve(__dirname);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

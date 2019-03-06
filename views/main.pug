@@ -43,12 +43,13 @@ block content
     if (document.getElementById('img')) {
       document.getElementById('img').addEventListener('change', function (e) {
         var formData = new FormData();
-        console.log(this, this.files);
+        console.log(this.files[0]);
         formData.append('img', this.files[0]);
         var xhr = new XMLHttpRequest();
         xhr.onload = function () {
           if (xhr.status === 200) {
             var url = JSON.parse(xhr.responseText).url;
+            console.log('ajax 리스폰스로 받은 rul값 = ',url);
             document.getElementById('img-url').value = url;
             document.getElementById('img-preview').src = url;
             document.getElementById('img-preview').style.display = 'inline';

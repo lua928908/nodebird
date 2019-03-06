@@ -7,7 +7,7 @@
     "dev": "nodemon app",
     "start": "cross-env NODE_ENV=production PORT=80 pm2 start app.js -i -1"
   },
-  "author": "ZeroCho",
+  "author": "lua928908",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^3.0.2",
@@ -26,7 +26,7 @@
     "passport": "^0.4.0",
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
-    "pm2": "^3.2.4",
+    "pm2": "^3.3.1",
     "pug": "^2.0.3",
     "sequelize": "^4.37.6",
     "winston": "^3.1.0"

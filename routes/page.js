@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { Post, User } = require('../models');
 
@@ -18,6 +19,13 @@ router.get('/join', isNotLoggedIn, (req, res) => {
 
 // 메인페이지
 router.get('/', (req, res, next) => {
+	fs.exists(appRoot + '/uploads', (exists)=>{
+		if(!exists){
+			fs.mkdirSync('./uploads');
+			console.log('경로생성');
+		}
+	})
+
 	Post.findAll({
 	  include: [{
 		model: User,
